@@ -3,6 +3,7 @@
 #include <vector>
 #include <unistd.h>
 #include <algorithm>
+#include <map>
 
 float angolo_min = 10; //il valore si puo diminuire per vedere se si puó ruotare di angoli piú piccoli in modo ripetibile
 float raggio = 24; //distanza sensore centro macchina
@@ -10,7 +11,7 @@ float angolo_max = 40; //angolo massimo oltre il quale il muro risulta troppo di
 int intervallo_tra_rilevazioni_distanza = 100; //intervallo in milli secondi
 int i_max = (int) (angolo_max /
                    angolo_min); //facciamo le rielevazioni ad intervalli costanti di angolo in modo da vedere se dopo la partenza ruota a velocità angolare costante, se cosi fosse occorre capire dopo quanto tempo va a regime e poi possiamo farla girare dellángolo che vogliamo
-                   
+
 float rileva_distanza() {
     //TODO
 }
@@ -76,6 +77,9 @@ struct Point {
     float a;
 };
 
+
+float posizione_sensore();
+
 Point
 punto_rispetto_al_centro(float distanza_1, float angolo_1) //calcola le coridiante dei punti rilevati rispetto al centro
 {
@@ -117,7 +121,57 @@ float cerca_corridoio(
     return *std::min_element(angoli_possibili.begin(), angoli_possibili.end());
 }
 
-std::vector<float> rileva_ostacoli() {
-    return ostacoli_rilevati;
+
+std::map<int, int> m{{1, 45},
+                     {2, 30},
+                     {3, 20},
+                     {4, 15},
+                     {5, 10}};
+
+std::map<float, Point> ostacoli_rilevati;
+int classe_ostacolo_o;
+float ang_ostacolo_o;
+
+void memorizza_ostacoli(float dis_ostacolo_n, float ang_ostacolo_n) {
+    if (dis_ostacolo_n < 200) {
+        int classe_ostacolo_n = ceil(dis_ostacolo_n / 40);
+        bool eq_class = classe_ostacolo_o == classe_ostacolo_n;
+        if (eq_class && (int) abs(ang_ostacolo_n - ang_ostacolo_o) < m[classe_ostacolo_n]) {
+            return;
+        }
+        ostacoli_rilevati[ang_ostacolo_n] = punto_rispetto_al_centro(dis_ostacolo_n, ang_ostacolo_n);
+        ang_ostacolo_o = ang_ostacolo_n;
+        classe_ostacolo_o = classe_ostacolo_n;
+    }
 }
+
+void ruota_sensore(int i) {
+//TODO scandaglio degli ostacolo ruotando il sensore se i==0 ruota a sinistra se i==1 ruota a destra
+
+}
+
+
+void rileva_ostacoli() {
+    float inclinazione_sensore_o = 0;
+    float inclinazione_sensore_n;
+    ostacoli_rilevati.clear();
+
+    for (int i = 0; i < 2; i++) {
+        ruota_sensore(i);
+        while (true) {
+            inclinazione_sensore_n = posizione_sensore();
+            if ((i == 0 && inclinazione_sensore_n >= 90) || (i == 1 && inclinazione_sensore_n <= 90))
+                break;
+            if ((i == 0 || inclinazione_sensore_n < 0) &&
+                (int) abs(inclinazione_sensore_o - inclinazione_sensore_n) > 0) {
+                memorizza_ostacoli(rileva_distanza(), inclinazione_sensore_n);
+                inclinazione_sensore_o = inclinazione_sensore_n;
+            }
+        }
+    }
+}
+
+
+
+
 
