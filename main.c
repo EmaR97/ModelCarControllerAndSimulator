@@ -444,7 +444,7 @@ void trace(const char *format, ...) {
     vsnprintf(msg, sizeof(msg), format, args);
     va_end(args);
 
-/* END SIMULATION PART */
+/* START SIMULATION PART */
     printf("%s\n", msg);
 /* END SIMULATION PART */
 
