@@ -460,7 +460,7 @@ void trace(const char *format, ...) {
  * @brief Controllo del movimento della macchina compresa la ricerca del percorso
  * @param num_samples
  */
-_Noreturn void movement_control(int num_samples) {
+void movement_control(int num_samples) {
 
     trace("\nMovement_control");
     trace("space_needed_to_turn: %d", space_needed_to_turn);

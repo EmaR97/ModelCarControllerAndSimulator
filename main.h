@@ -88,7 +88,7 @@ void evaluate_car_position(direction dir, uint32_t total_time, int print);
 
 void reset_car_position(void);
 
-_Noreturn void movement_control(int num_samples);
+ void movement_control(int num_samples);
 
 /* motor function */
 void motor_control(direction d, speed s);
