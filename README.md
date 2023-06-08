@@ -1,6 +1,6 @@
 ## Istruzioni per l'uso
 
-Nel file "main.c" sono evidenziate diverse parti del codice in base al fatto che vengano usate nel simulatore o sul modellino reale.
+Nel file "[main.c](main.c)" sono evidenziate diverse parti del codice in base al fatto che vengano usate nel simulatore o sul modellino reale.
 
 Per usare il programma come simulazione le parte per il micro controllore vanno commentate o cancellate.
 
