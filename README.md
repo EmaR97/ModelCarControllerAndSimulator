@@ -1,5 +1,7 @@
 ## Istruzioni per l'uso
 
+Questa cartella contiene in codice usato relativo alla simulazione e l'archivio con il codice per il micro controllore.
+
 Nel file "[main.c](main.c)" sono evidenziate diverse parti del codice esclusive del simulatore e del micro-controllore:
 - L'inizio e la fine dei segmenti di codice relativi alla simulazione sono evidenziati dalla presenza di due commenti (START SIMULATION PART, END SIMULATION PART). Queste parti vanno commentate se si vuole usare il programma er controllare il micro-controllore perché vanno a sovrascrivere alcune funzioni essenziali per il funzionamento del micro.
 - L'inizio e la fine dei segmenti di codice relativi solo al micro_controllore sono evidenziati dalla presenza di due commenti (MICRO ONLY START, MICRO ONLY END).queste parti vanno commentate se si vuole eseguire la parte della simulazione.
@@ -7,6 +9,11 @@ Nel file "[main.c](main.c)" sono evidenziate diverse parti del codice esclusive 
 Il file "[Array_ostacoli.txt](Array_ostacoli.txt)" contiene una sequenza di ostacoli, che rappresentano un percorso di prova. Possono essere caricati all'inizio del programma di simulazione per provare il funzionamento del programma per la selezione del percorso.
 
 Il file "[percorso di prova.png](percorso%20di%20prova.png)" è una rappresentazione del percorso di prova usato per il testing del l'algoritmo di selezione del percorso
+
+L'eseguibile per provare la simulazione è nella cartella "[cmake-build-debug](cmake-build-debug)"
+
+L'archivio "[ferrari_st-master](ferrari_st-master.zip)" contiene il progetto da compilare e caricare sulla macchinina tramite AutoDevKit (le parti di codice relative alla simulazione sono state gia rimosse).
+
 
 ## Funzionamento 
 
