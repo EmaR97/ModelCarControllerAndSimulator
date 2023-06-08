@@ -12,7 +12,7 @@ Il file "[percorso di prova.png](percorso%20di%20prova.png)" è una rappresentaz
 
 Per il corretto funzionamento del programma occorre conoscere la velocità e la velocità angolare a regime del modellino, queste informazioni vengono ricavate tramite una fase di calibrazione. I risultati di questa fase possono essere visualizzati e inseriti nelle costanti del codice o, se le condizioni lo permettono, è possibile effettuare la fase di calibrazione all avvio del modellino. Per tenere conto del esaurimento della batteria, che influisce sulla potenza erogata dai motori e quindi sulla velocità, effettuare la calibrazione all'accensione. Occorre effettuare la calibrazione al variare del terreno su cui si adopera il modellino per tenere conto di eventuali slittamenti delle ruote su superfici lisce. 
 
-### Calibrazione velocità 
+## Calibrazione velocità 
 
-Se si esegue la calibrazione completa, occorre posizionare la macchina appoggiata perpendicolarmente a un muro dritto di lunghezza sufficiente (2 metri circa). La fase di calibrazione sara composta dalle seguenti fasi:
-- 
+Per eseguire la calibrazione completa(complete_calibrate), occorre posizionare la macchina appoggiata perpendicolarmente a un muro dritto di lunghezza sufficiente (2 metri circa). Per il corretto funzionamento occorre assicurarsi che il sensore TOF sia correttamente calibrato. La fase di calibrazione sara composta dalle seguenti fasi:
+- Il modellino si allontanerà dal muro di una 20 di centimetri e rileverà la distanza dal muro(distanza_iniziale).
