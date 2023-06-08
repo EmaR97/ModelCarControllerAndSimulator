@@ -1,4 +1,4 @@
-### Istruzioni per l'uso
+## Istruzioni per l'uso
 
 Nel file "main.c" sono evidenziate diverse parti del codice in base al fatto che vengano usate nel simulatore o sul modellino reale.
 
